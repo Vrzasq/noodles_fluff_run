@@ -1,27 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Linq;
+using UnityEditor.Animations;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class AnimationController : MonoBehaviour
 {
-    private Rigidbody2D rigidBody;
-    private Transform parentTransorm;
+    Animator animator;
+    [SerializeField] Rigidbody2D rigidbody2D;
+    SpriteRenderer spriteRenderer;
+
     void Awake()
     {
-        rigidBody = GetComponentInParent<Rigidbody2D>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        if (rigidbody2D == null)
+            rigidbody2D = GetComponentInParent<Rigidbody2D>();
+            
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    
-
-    // Update is called once per frame
     void Update()
     {
-        var currentPosition = new Vector2(rigidBody.position.x, rigidBody.position.y);
-        rigidBody.MovePosition(currentPosition + (Vector2.right * Time.deltaTime));
+        FlipSprite();
+        animator.SetFloat("speed", Mathf.Abs(rigidbody2D.velocity.x));
+    }
+
+    void FlipSprite()
+    {
+        if (rigidbody2D.velocity.x < 0)
+            spriteRenderer.flipX = true;
+        else
+            spriteRenderer.flipX = false;
     }
 }
