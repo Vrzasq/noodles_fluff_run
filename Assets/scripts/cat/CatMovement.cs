@@ -94,6 +94,5 @@ namespace noodles_fluff_run.Assets.scripts.cat
             else if (direction == Vector2.zero)
                 direction = Vector2.right;
         }
-
     }
 }

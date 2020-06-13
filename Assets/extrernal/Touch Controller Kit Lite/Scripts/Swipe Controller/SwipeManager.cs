@@ -49,7 +49,7 @@ public class SwipeManager : MonoBehaviour
     [SerializeField] [Range(50f, 200f)] private float minSwipeLength = 100f;
 
     [Tooltip("Time between which consecutive taps will be considered a double or a triple tap")]
-    [SerializeField] [Range(0.1f, 1f)] private float timeBetweenTaps = 0.5f;
+    [SerializeField] [Range(0f, 1f)] private float timeBetweenTaps = 0.5f;
 
     [Tooltip("This nullifies tap for specified seconds after being called once. Set this to zero if you want non-stop consecutive taps")]
     [SerializeField] [Range(0f, 5f)] private float tapNullifyTimeAfterTrigger = 1f;
