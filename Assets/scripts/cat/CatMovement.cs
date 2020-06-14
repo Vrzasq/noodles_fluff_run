@@ -6,29 +6,28 @@ namespace noodles_fluff_run.Assets.scripts.cat
 {
     public class CatMovement : MonoBehaviour
     {
-        [SerializeField] float moveForce = 7f;
-        [SerializeField] float maxSpeed = 3.5f;
-        [SerializeField] float jumpForce = 15f;
-        [SerializeField] Vector2 direction = Vector2.right;
-        [SerializeField] Transform groundCheck;
+        [SerializeField] private float moveForce = 7f;
+        [SerializeField] private float maxSpeed = 3.5f;
+        [SerializeField] private float jumpForce = 15f;
+        [SerializeField] private Vector2 direction = Vector2.zero;
+        [SerializeField] private Transform groundCheck;
         [SerializeField] private LayerMask groundMask;
 
-        Rigidbody2D rigidbody2D;
+        private Rigidbody2D rigidbody2D;
 
         private bool shouldJump = false;
         private bool isGrounded = true;
-        private Vector2 velocitySnapShot = Vector2.zero;
 
         public UnityEvent Jump;
         public UnityEvent Land;
 
-        private void Awake()
+        void Awake()
         {
             rigidbody2D = GetComponent<Rigidbody2D>();
             RegisterSwipes();
         }
 
-        private void FixedUpdate()
+        void FixedUpdate()
         {
             MoveCat();
             CheckGround();
@@ -56,7 +55,6 @@ namespace noodles_fluff_run.Assets.scripts.cat
 
         private void CheckGround()
         {
-            Debug.Log(isGrounded);
             if (isGrounded)
                 return;
 
