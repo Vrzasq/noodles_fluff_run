@@ -1,5 +1,4 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class dg_simpleCamFollow : MonoBehaviour
@@ -12,7 +11,13 @@ public class dg_simpleCamFollow : MonoBehaviour
     Vector3 whereCameraShouldBe;
     bool warningAlreadyShown = false;
 
-    private void Start() {
+    void Awake()
+    {
+        if (target == null)
+            throw new ArgumentException($"{nameof(target)} {nameof(Transform)} cannot be null");
+    }
+
+    void Start() {
         if (takeOffsetFromInitialPos && target != null)
             generalOffset = transform.position - target.position;
     }
