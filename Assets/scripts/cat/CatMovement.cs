@@ -36,6 +36,11 @@ namespace noodles_fluff_run.Assets.scripts.cat
                 MakeJump();
         }
 
+        void OnCollisionExit2D(Collision2D collision)
+        {
+            AirCheck(collision);
+        }
+
         private void MoveCat()
         {
             if (Mathf.Abs(rigidbody2D.velocity.x) < maxSpeed)
@@ -65,6 +70,18 @@ namespace noodles_fluff_run.Assets.scripts.cat
             }
         }
 
+        private void AirCheck(Collision2D collision)
+        {
+            if (IsGroundLayer(collision.gameObject.layer))
+            {
+                isGrounded = false;
+                Jump?.Invoke();
+            }
+        }
+
+        private bool IsGroundLayer(int layer) =>
+            layer == Mathf.Log(groundMask.value, 2);
+
         private void RegisterSwipes()
         {
             SwipeEvents.OnSwipeLeft += OnSwipeLeft;
@@ -72,10 +89,9 @@ namespace noodles_fluff_run.Assets.scripts.cat
             SwipeManager.OnSingleTap += OnSingleTap;
         }
 
-        private void OnSingleTap()
-        {
+        private void OnSingleTap() =>
             shouldJump = true;
-        }
+
 
         private void OnSwipeLeft()
         {
