@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 250650746786901768}
   - component: {fileID: 250650746786901771}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: DefaultCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,4 +100,4 @@ MonoBehaviour:
   laziness: 20
   lookAtTarget: 0
   takeOffsetFromInitialPos: 0
-  generalOffset: {x: 0, y: 0, z: -10}
+  generalOffset: {x: 0, y: 2, z: -10}
