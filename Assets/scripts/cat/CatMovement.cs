@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -89,8 +88,11 @@ namespace noodles_fluff_run.Assets.scripts.cat
             SwipeManager.OnSingleTap += OnSingleTap;
         }
 
-        private void OnSingleTap() =>
-            shouldJump = true;
+        private void OnSingleTap()
+        {
+            if (isGrounded)
+                shouldJump = true;
+        }
 
 
         private void OnSwipeLeft()
