@@ -7,8 +7,6 @@ namespace Assets.scripts.cat
     {
         public static event Action OnDeath;
 
-        void Start() { }
-
         public void KillOnDeathTrigger()
         {
             Debug.Log("Killed by death trigger");
