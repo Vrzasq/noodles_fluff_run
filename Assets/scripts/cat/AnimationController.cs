@@ -44,5 +44,4 @@ public class AnimationController : MonoBehaviour
     {
         animator.SetBool("isJumping", false);
     }
-
 }

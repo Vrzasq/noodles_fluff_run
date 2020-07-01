@@ -6,10 +6,7 @@ namespace Assets.scripts
     {
         void OnTriggerEnter2D(Collider2D collision)
         {
-            var killable = collision.gameObject.GetComponent<IKillableByDeathTrigger>();
-
-            if (killable == null)
-                killable = collision.gameObject.GetComponentInParent<IKillableByDeathTrigger>();
+            var killable = collision.attachedRigidbody.GetComponent<IKillableByDeathTrigger>();
 
             killable?.KillOnDeathTrigger();
         }

@@ -17,19 +17,19 @@ public class HpBar : MonoBehaviour
 
     void OnEnable()
     {
-        CatHp.HpChange += CatHp_HpLoss;
+        CatHp.HpChange += CatHp_HpChange;
     }
 
     void OnDisable()
     {
-        CatHp.HpChange -= CatHp_HpLoss;
+        CatHp.HpChange -= CatHp_HpChange;
     }
 
 
     public void SetStartHp(int hearthNumber)
         => this.hearthNumber = hearthNumber;
 
-    public void CatHp_HpLoss(int currentHp)
+    public void CatHp_HpChange(int currentHp)
     {
         for (int i = 0; i < hearths.Length; i++)
         {

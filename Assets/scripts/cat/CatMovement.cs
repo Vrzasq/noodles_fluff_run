@@ -1,3 +1,4 @@
+using Assets.scripts.cat;
 using UnityEngine;
 using UnityEngine.Events;
 
