@@ -98,18 +98,20 @@ namespace noodles_fluff_run.Assets.scripts.cat
 
         private void OnSwipeLeft()
         {
-            if (direction == Vector2.right)
-                direction = Vector2.zero;
-            else if (direction == Vector2.zero)
-                direction = Vector2.left;
+            //if (direction == Vector2.right)
+            //    direction = Vector2.zero;
+            //else if (direction == Vector2.zero)
+            //    direction = Vector2.left;
+            direction = Vector2.left;
         }
 
         private void OnSwipRight()
         {
-            if (direction == Vector2.left)
-                direction = Vector2.zero;
-            else if (direction == Vector2.zero)
-                direction = Vector2.right;
+            //if (direction == Vector2.left)
+            //    direction = Vector2.zero;
+            //else if (direction == Vector2.zero)
+            //    direction = Vector2.right;
+            direction = Vector2.right;
         }
     }
 }
