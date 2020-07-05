@@ -3,5 +3,6 @@
     public interface ICollectible
     {
         int Points { get; }
+        void Collect();
     }
 }

@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Assets.scripts;
+using System;
 using UnityEngine;
-
-using Random = Unity.Mathematics.Random;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class RandomTexture : MonoBehaviour
@@ -21,10 +20,6 @@ public class RandomTexture : MonoBehaviour
     }
 
 
-    private Sprite PickRandomSprite()
-    {
-        var rand = new Random((uint)DateTime.Now.Ticks);
-
-        return sprites[rand.NextInt(0, sprites.Length)];
-    }
+    private Sprite PickRandomSprite() =>
+        sprites[Rng.NextInt(0, sprites.Length)];
 }

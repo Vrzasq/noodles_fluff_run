@@ -5,27 +5,21 @@ using UnityEngine;
 public class CrystalCollector : MonoBehaviour
 {
     public static event Action<int> ScoreChanged;
-    public static event Func<ICollectible> CollectibleCollected;
 
     public int Score { get; private set; } = 0;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("collectible"))
-        {
-            int? points = CollectibleCollected?.Invoke().Points;
+        var collectible = collision.GetComponent<ICollectible>();
 
-            if (points.HasValue)
-            {
-                Score += points.Value;
-                OnScoreChanged();
-            }
+        if (collectible != null)
+        {
+            Score += collectible.Points;
+            collectible.Collect();
+            OnScoreChanged();
         }
     }
 
-    private void OnScoreChanged()
-    {
+    private void OnScoreChanged() =>
         ScoreChanged?.Invoke(Score);
-        Debug.Log(Score);
-    }
 }

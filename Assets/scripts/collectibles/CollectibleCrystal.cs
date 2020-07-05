@@ -6,19 +6,6 @@ public class CollectibleCrystal : MonoBehaviour, ICollectible
     [SerializeField] int points;
     public int Points => points;
 
-    void OnEnable()
-    {
-        CrystalCollector.CollectibleCollected += OnCollect;
-    }
-
-    void OnDisable()
-    {
-        CrystalCollector.CollectibleCollected -= OnCollect;
-    }
-
-    private ICollectible OnCollect()
-    {
+    void ICollectible.Collect() =>
         gameObject.SetActive(false);
-        return this;
-    }
 }
